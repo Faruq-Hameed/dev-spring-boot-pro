@@ -18,6 +18,7 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "email") //optional since both field and column name are the same
     private String email;
 
     //define constructors
