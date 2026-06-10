@@ -1,4 +1,4 @@
-package com.luv2code.springboot.empoyeemanagement.rest;
+package com.luv2code.springboot.empoyeemanagement.controller;
 
 import com.luv2code.springboot.empoyeemanagement.dao.EmployeeDAO;
 import com.luv2code.springboot.empoyeemanagement.entity.Employee;
@@ -11,11 +11,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
-public class EmployeeController {
+public class EmployeeRestController {
     private EmployeeDAO employeeDAO;
 
     @Autowired
-    public EmployeeController(EmployeeDAO theEmployeeDAO){
+    public EmployeeRestController(EmployeeDAO theEmployeeDAO){
         this.employeeDAO = theEmployeeDAO;
     }
 
