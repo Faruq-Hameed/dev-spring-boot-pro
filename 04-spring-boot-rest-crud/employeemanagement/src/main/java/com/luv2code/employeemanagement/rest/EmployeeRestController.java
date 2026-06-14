@@ -24,9 +24,9 @@ public class EmployeeRestController {
         return employeeService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Employee getEmployeeById(@PathVariable int id){
-        return this.employeeService.findById(id);
+    @GetMapping("/{employeeId}")
+    public Employee getEmployeeById(@PathVariable int employeeId){
+        return this.employeeService.findById(employeeId);
     }
 
     @PostMapping
@@ -35,17 +35,17 @@ public class EmployeeRestController {
         return this.employeeService.save(employee);
     }
 
-    @PutMapping("/{id}")
-    public Employee updateEmployee(@PathVariable int id, Employee employee){
-        if(employee.getId() !=id){
+    @PutMapping("/{employeeId}")
+    public Employee updateEmployee(@PathVariable int employeeId, Employee employee){
+        if(employee.getId() !=employeeId){
             throw new EmployeeConflictException("Path Variable and employee id differs");
         }
         return this.employeeService.update(employee);
     }
 
-    @DeleteMapping("/{id}")
-    public void updateEmployee(@PathVariable int id){
-        this.employeeService.delete(id);
+    @DeleteMapping("/{employeeId}")
+    public void updateEmployee(@PathVariable int employeeId){
+        this.employeeService.delete(employeeId);
     }
 
 }
