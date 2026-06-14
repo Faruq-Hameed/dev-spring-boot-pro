@@ -32,6 +32,7 @@ public class EmployeeRestController {
     @PostMapping
     public Employee createEmployee(@RequestBody Employee employee){
         System.out.println(employee);
+        employee.setId(0);//set this to 0 incase id was passed
         return this.employeeService.save(employee);
     }
 

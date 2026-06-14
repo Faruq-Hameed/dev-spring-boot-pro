@@ -36,7 +36,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional//best to be used in service level not dao
     public Employee save(Employee employee) {
-        System.out.println(employee);
         return this.employeeDAO.save(employee);
     }
 

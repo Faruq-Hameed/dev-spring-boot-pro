@@ -36,12 +36,13 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO{
 
     @Override
     public Employee save(Employee employee) {
-        return this.entityManager.merge(employee);
+        return this.entityManager.merge(employee); //merge will insert/create if id is 0
     }
 
     @Override
     public Employee update(Employee theEmployee) {
-        return this.entityManager.merge(theEmployee);
+        return this.entityManager.merge(theEmployee) //so update will occur since id cannot be zero
+                ;
     }
 
     @Override

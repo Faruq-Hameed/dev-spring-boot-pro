@@ -11,7 +11,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -25,8 +25,7 @@ public class Employee {
     //define constructors
     public Employee(){}
 
-    public Employee(int id, String firstName, String lastName, String email) {
-        this.id = id;
+    public Employee( String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
