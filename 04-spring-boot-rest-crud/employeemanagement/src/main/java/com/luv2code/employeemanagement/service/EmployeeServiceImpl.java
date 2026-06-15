@@ -45,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 //    @Override
     @Transactional
-    public Employee update( Map<String, Object> patchData, int id) {
+    public Employee update( int id, Map<String, Object> patchData) {
         //fetch the employee existence
         Employee employee = this.findById(id);
 
