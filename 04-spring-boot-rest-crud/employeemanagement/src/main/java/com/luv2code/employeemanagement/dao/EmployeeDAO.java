@@ -11,7 +11,7 @@ public interface EmployeeDAO {
 
     public Employee save(Employee employee);
 
-    public Employee update(Employee theEmployee);
+//    public Employee update(Employee theEmployee);
 
     public void delete(int id);
 }
