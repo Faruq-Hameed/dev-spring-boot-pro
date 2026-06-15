@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -36,12 +37,27 @@ public class EmployeeRestController {
         return this.employeeService.save(employee);
     }
 
+    @PutMapping
+    public Employee updateEmployee(Employee employee){
+        //confirm the employee passed exist
+        employeeService.findById(employee.getId());
+
+        //update the employee with the new info and return the updated row
+        return this.employeeService.save(employee);
+    }
+
     @PutMapping("/{employeeId}")
-    public Employee updateEmployee(@PathVariable int employeeId, Employee employee){
-        if(employee.getId() !=employeeId){
-            throw new EmployeeConflictException("Path Variable and employee id differs");
+    public Employee updateEmployee(@PathVariable int employeeId, Map<String, Object> patchData){
+        //check for null object incase passed in
+        if(patchData == null){
+            throw new RuntimeException("Minimum of on update must be performed");
         }
-        return this.employeeService.update(employee);
+
+        //the req body must not contain the id
+        if(patchData.containsKey("id")){
+            throw new EmployeeBadRequestException("Cannot update id.");
+        }
+        return this.employeeService.update(employeeId, patchData);
     }
 
     @DeleteMapping("/{employeeId}")

@@ -6,17 +6,21 @@ import com.luv2code.employeemanagement.rest.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeDAO employeeDAO;
+    private JsonMapper jsonMapper; //useful for partial updates
 
     //constructor with auto wired injection
     @Autowired
-    public EmployeeServiceImpl(EmployeeDAO employeeDAO){
+    public EmployeeServiceImpl(EmployeeDAO employeeDAO, JsonMapper jsonMapper){
         this.employeeDAO = employeeDAO;
+        this.jsonMapper =  jsonMapper;
     }
 
     @Override
@@ -39,12 +43,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         return this.employeeDAO.save(employee);
     }
 
-    @Override
+//    @Override
     @Transactional
-    public Employee update(Employee employee) {
-        //confirm the employee existence
-        this.findById(employee.getId());
-        return this.employeeDAO.update(employee);
+    public Employee update( Map<String, Object> patchData, int id) {
+        //fetch the employee existence
+        Employee employee = this.findById(id);
+
+        Employee patchedEmployee = this.jsonMapper.updateValue(employee, patchData); //i.e update this object with the patch data
+
+        //save and return the updated employee
+        return this.employeeDAO.save(patchedEmployee);
     }
 
     @Override
