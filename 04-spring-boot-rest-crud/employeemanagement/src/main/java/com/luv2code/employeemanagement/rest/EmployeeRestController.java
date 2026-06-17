@@ -47,8 +47,8 @@ public class EmployeeRestController {
         return this.employeeService.save(employee);
     }
 
-    @PutMapping("/{employeeId}")
-    public Employee updateEmployee(@PathVariable int employeeId, Map<String, Object> patchData){
+    @PatchMapping("/{employeeId}")
+    public Employee updateEmployee(@PathVariable int employeeId, @RequestBody Map<String, Object> patchData){
         //check for null object incase passed in
         if(patchData == null){
             throw new RuntimeException("Minimum of on update must be performed");
