@@ -38,7 +38,8 @@ public class EmployeeRestController {
     }
 
     @PutMapping
-    public Employee updateEmployee(Employee employee){
+    public Employee updateEmployee(@RequestBody Employee employee){
+        System.out.println("Req body is :"+ employee.toString()+ "\n");
         //confirm the employee passed exist
         employeeService.findById(employee.getId());
 

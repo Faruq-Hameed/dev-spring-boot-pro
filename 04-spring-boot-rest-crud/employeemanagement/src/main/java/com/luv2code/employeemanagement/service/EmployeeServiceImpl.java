@@ -48,9 +48,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee update( int id, Map<String, Object> patchData) {
         //fetch the employee existence
         Employee employee = this.findById(id);
+        System.out.println("Employee fetched by service is : " + employee.toString() + "\n");
 
         Employee patchedEmployee = this.jsonMapper.updateValue(employee, patchData); //i.e update this object with the patch data
-
+        System.out.println("PAtched employee is : " + patchedEmployee.toString() + " \n");
         //save and return the updated employee
         return this.employeeDAO.save(patchedEmployee);
     }
