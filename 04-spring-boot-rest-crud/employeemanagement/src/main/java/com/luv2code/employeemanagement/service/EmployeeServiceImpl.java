@@ -59,6 +59,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public void delete(int id) {
+        //confirm the employee existence
+
+        employeeDAO.findById(id);
         this.employeeDAO.delete(id);
 //        return null;
     }

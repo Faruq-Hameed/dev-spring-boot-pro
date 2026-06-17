@@ -39,7 +39,6 @@ public class EmployeeRestController {
 
     @PutMapping
     public Employee updateEmployee(@RequestBody Employee employee){
-        System.out.println("Req body is :"+ employee.toString()+ "\n");
         //confirm the employee passed exist
         employeeService.findById(employee.getId());
 
@@ -62,8 +61,9 @@ public class EmployeeRestController {
     }
 
     @DeleteMapping("/{employeeId}")
-    public void updateEmployee(@PathVariable int employeeId){
+    public String updateEmployee(@PathVariable int employeeId){
         this.employeeService.delete(employeeId);
+        return "Employee with id: "+ employeeId + " deleted successfully";
     }
 
 }

@@ -36,7 +36,6 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO{
 
     @Override
     public Employee save(Employee employee) {
-        System.out.println("Passed employee is : " + employee.toString());
         return this.entityManager.merge(employee); //merge will insert/create if id is 0
     }
 
