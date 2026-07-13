@@ -8,38 +8,19 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class DemoSecurityConfig {
+
+    //add support for JDBC
     @Bean
-    /* This is for UserDetails Managements i.e permitted users to sign in and make request**/
-    public InMemoryUserDetailsManager userDetailsManager(){
-        UserDetails john = User.builder()
-                .username("john")
-                .password("{noop}pass")
-                .roles("EMPLOYEE")
-                .build();
-        System.out.println(john.getAuthorities());
-
-        UserDetails mary = User.builder() //Building a user so no longer default
-                .username("mary") //the username should be faruq
-                .password("{noop}pass1") //the password is pass plainly i.e noop
-                .roles("EMPLOYEE", "MANAGER")
-                .build(); //now build this user.
-
-        UserDetails susan = User.builder()
-                .username("susan")
-                .password("{noop}pass")
-                .roles("EMPLOYEE", "MANAGER", "ADMIN")
-                .build();
-
-        UserDetails faruq = User.builder()
-                .username("faruq")
-                .password("{noop}pass")
-//                .roles("EMPLOYEE", "MANAGER", "ADMIN")//no role
-                .build();
-        return new InMemoryUserDetailsManager(john, mary, susan, faruq); //return the instance of InMemo...
+    public UserDetailsManager userDetailsManager(DataSource dataSource){
+        return new JdbcUserDetailsManager(dataSource);
     }
 
     @Bean
@@ -63,4 +44,36 @@ public class DemoSecurityConfig {
         return httpSecurity.build();
     }
 
+    /**
+     @Bean
+     //This is for UserDetails Managements i.e permitted users to sign in and make request
+     public InMemoryUserDetailsManager userDetailsManager(){
+     UserDetails john = User.builder()
+     .username("john")
+     .password("{noop}pass")
+     .roles("EMPLOYEE")
+     .build();
+     System.out.println(john.getAuthorities());
+
+     UserDetails mary = User.builder() //Building a user so no longer default
+     .username("mary") //the username should be faruq
+     .password("{noop}pass1") //the password is pass plainly i.e noop
+     .roles("EMPLOYEE", "MANAGER")
+     .build(); //now build this user.
+
+     UserDetails susan = User.builder()
+     .username("susan")
+     .password("{noop}pass")
+     .roles("EMPLOYEE", "MANAGER", "ADMIN")
+     .build();
+
+     UserDetails faruq = User.builder()
+     .username("faruq")
+     .password("{noop}pass")
+     //                .roles("EMPLOYEE", "MANAGER", "ADMIN")//no role
+     .build();
+     return new InMemoryUserDetailsManager(john, mary, susan, faruq); //return the instance of InMemo...
+     }
+
+     */
 }
