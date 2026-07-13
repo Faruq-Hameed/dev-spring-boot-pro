@@ -49,7 +49,7 @@ public class DemoSecurityConfig {
 
            configurer
                    .requestMatchers(HttpMethod.GET, "/api").anonymous()
-                   .requestMatchers(HttpMethod.GET, "/api/employees").hasRole("EMPLOYEE") //anyone can access this
+                   .requestMatchers(HttpMethod.GET, "/api/employees").hasRole("EMPLOYEE")
                    .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("EMPLOYEE") //must have employee role to access
                    .requestMatchers(HttpMethod.POST, "/api/employees").hasRole("MANAGER")
                    .requestMatchers(HttpMethod.PUT, "/api/employee/**").hasRole("ADMIN")

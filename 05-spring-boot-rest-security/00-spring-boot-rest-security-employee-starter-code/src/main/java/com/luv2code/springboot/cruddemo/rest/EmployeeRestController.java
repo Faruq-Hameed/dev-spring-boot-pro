@@ -90,11 +90,11 @@ public class EmployeeRestController {
         // Step 2: Security check - prevent ID modifications
         // The ID should never change, so reject any attempts to modify it
         if (patchPayload.containsKey("id")) {
+
             throw new RuntimeException(
                     "Employee id cannot be modified. Remove 'id' from request body.");
         }
-
-        // Step 3: Apply the partial update
+        // Step 3: Apply the partial update.
         // This creates a NEW employee object with the updates applied
         Employee patchedEmployee = jsonMapper.updateValue(tempEmployee, patchPayload);
 
