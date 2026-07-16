@@ -31,6 +31,9 @@ public class DemoSecurityConfig {
         return jdbcUserDetailsManager;
     }
 
+
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
         //configure the every request must be authenticated
