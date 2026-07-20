@@ -14,7 +14,7 @@ public class HelloWorldController {
 
     //controller method to show d form
     @PostMapping("/form")
-    @ResponseBody
+//    @ResponseBody
     public String createHello(){
     return "helloworld";
     }
