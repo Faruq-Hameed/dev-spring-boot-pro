@@ -5,7 +5,7 @@
     <title>Hello world input form</title>
 </head>
 <body>
-<form action="@{}" method="post">
+<form th:action="@{/form}" method="post">
     <input type="text" th:name="studentName" id="studentName" placeholder="Enter your name">
     <button type="submit"> Submit</button>
 </form>
