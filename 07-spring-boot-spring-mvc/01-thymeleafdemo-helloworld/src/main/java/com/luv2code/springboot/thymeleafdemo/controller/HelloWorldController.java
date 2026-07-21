@@ -21,7 +21,7 @@ public class HelloWorldController {
     return "helloworld";
     }
 
-    @PostMapping("/process/:id")
+    @PostMapping("/process")
 //    public String processForm(HttpServletRequest request, Model model){
     public String processForm(@RequestParam String studentName,@RequestParam String id, Model model){
         System.out.println("ID is "+ id);
