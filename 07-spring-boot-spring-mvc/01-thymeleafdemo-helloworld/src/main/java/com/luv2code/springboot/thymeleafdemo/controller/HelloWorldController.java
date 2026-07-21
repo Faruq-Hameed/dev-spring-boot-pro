@@ -22,11 +22,12 @@ public class HelloWorldController {
     }
 
     @PostMapping("/process")
-    public String processForm(HttpServletRequest request, Model model){
+//    public String processForm(HttpServletRequest request, Model model){
+    public String processForm(@RequestParam String studentName, Model model){
 
         //read the request parameter from the HTML form
-        String studentName = request.getParameter("studentName");
-
+//        String studentName = request.getParameter("studentName");
+//        String studentName = req.
         //convert the name to upper case
         studentName = studentName.toUpperCase();
 
