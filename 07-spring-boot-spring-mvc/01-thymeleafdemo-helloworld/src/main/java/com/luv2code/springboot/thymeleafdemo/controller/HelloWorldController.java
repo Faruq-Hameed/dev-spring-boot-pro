@@ -28,7 +28,7 @@ public class HelloWorldController {
         String studentName = request.getParameter("studentName");
 
         //convert the name to upper case
-        studentName.toUpperCase();
+        studentName = studentName.toUpperCase();
 
         //create the new message
         String message = "Happy to see you! " + studentName;
