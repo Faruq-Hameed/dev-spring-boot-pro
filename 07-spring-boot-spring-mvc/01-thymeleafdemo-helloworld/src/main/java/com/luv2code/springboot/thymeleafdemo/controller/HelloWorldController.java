@@ -1,8 +1,10 @@
 package com.luv2code.springboot.thymeleafdemo.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.support.HttpRequestHandlerServlet;
 
 @Controller
 public class HelloWorldController {
@@ -17,5 +19,21 @@ public class HelloWorldController {
 //    @ResponseBody
     public String createHello(){
     return "helloworld";
+    }
+
+    @PostMapping("/process")
+    public String processForm(HttpServletRequest request, Model model){
+
+        //read the request parameter from the HTML form
+        String studentName = request.getParameter("studentName");
+
+        //convert the name to upper case
+        studentName.toUpperCase();
+
+        //create the new message
+        String message = "Happy to see you! " + studentName;
+
+        //add the message to the model
+
     }
 }
