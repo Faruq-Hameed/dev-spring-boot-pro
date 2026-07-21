@@ -34,6 +34,9 @@ public class HelloWorldController {
         String message = "Happy to see you! " + studentName;
 
         //add the message to the model
+        model.addAttribute("message", message);
+
+        return "helloworld";
 
     }
 }
