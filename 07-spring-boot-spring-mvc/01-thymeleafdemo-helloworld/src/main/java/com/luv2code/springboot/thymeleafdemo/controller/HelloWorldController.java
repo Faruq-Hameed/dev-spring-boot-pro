@@ -24,7 +24,6 @@ public class HelloWorldController {
     @PostMapping("/process")
 //    public String processForm(HttpServletRequest request, Model model){
     public String processForm(@RequestParam String studentName,@RequestParam String id, Model model){
-        System.out.println("ID is "+ id);
         //read the request parameter from the HTML form
 //        String studentName = request.getParameter("studentName");
 //        String studentName = req.
