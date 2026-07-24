@@ -23,6 +23,6 @@ public class StudentController {
         System.out.println(studentName);
         model.addAttribute("studentName", studentName );
         model.addAttribute("message", "Professor");
-        return"helloworld";
+        return"greetings";
     }
 }
