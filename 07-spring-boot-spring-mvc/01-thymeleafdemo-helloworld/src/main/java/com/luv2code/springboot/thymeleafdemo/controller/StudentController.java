@@ -19,7 +19,9 @@ public class StudentController {
     public String submitSignIn(@ModelAttribute("student") Student theStudent, Model model){
         System.out.println("Form Submitted!");
 
-        model.addAttribute("studentName", theStudent.getFirstName() + theStudent.getLastName());
+        String studentName = theStudent.getFirstName() + theStudent.getLastName();
+        System.out.println(studentName);
+        model.addAttribute("studentName", studentName );
         model.addAttribute("message", "Professor");
         return"helloworld";
     }
