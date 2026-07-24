@@ -3,10 +3,7 @@ package com.luv2code.springboot.thymeleafdemo.controller;
 import com.luv2code.springboot.thymeleafdemo.utils.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StudentController {
@@ -19,9 +16,8 @@ public class StudentController {
     }
 
     @PostMapping("signin")
-    public void signin(Model model){
-        Student student = (Student) model.getAttribute("student");
+    public void signin(@ModelAttribute("student") Student theStudent){
         System.out.println("Form Submitted!");
-        System.out.println(student);
+        System.out.println(theStudent);
     }
 }
