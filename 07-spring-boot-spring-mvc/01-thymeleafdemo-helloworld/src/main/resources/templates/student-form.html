@@ -5,14 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/student}" th:object="${student}" method="POST">
+<form th:action="@{/signin}" th:object="${student}" method="POST">
     <p>Input your First Name</p>
     <input type="text" th:field="${student.firstName}">
     <br>
-    <br>
     <p>Input your Last Name</p>
     <input type="text" th:field="*{lastName}">
-
+    <br>
     <input type="submit" value="Submit">
 </form>
 </body>
