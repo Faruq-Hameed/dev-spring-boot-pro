@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1 th:text="Welcome Mr + ${studentName}"/>
+<h1>Welcome Mr: <span th:text="${studentName}"/></h1>
 <p th:text="${message}"/>
 </body>
 </html>
