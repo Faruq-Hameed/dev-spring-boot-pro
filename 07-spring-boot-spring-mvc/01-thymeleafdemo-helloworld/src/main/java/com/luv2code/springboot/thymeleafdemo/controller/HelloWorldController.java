@@ -22,19 +22,15 @@ public class HelloWorldController {
     }
 
     @PostMapping("/process")
-//    public String processForm(HttpServletRequest request, Model model){
-    public String processForm(@RequestParam("studentName") String stuName, Model model){
+    public String processForm(HttpServletRequest request, Model model){
         //read the request parameter from the HTML form
-//        String studentName = request.getParameter("studentName");
-//        String studentName = req.
+        String studentName = request.getParameter("studentName");
         //convert the name to upper case
-//        studentName = studentName.toUpperCase();
+        studentName = studentName.toUpperCase();
 
-        stuName = stuName.toUpperCase();
 
         //create the new message
-//        String message = "Happy to see you! " + studentName;
-        String message = "Happy to see you! " + stuName;
+        String message = "Happy to see you! " + studentName;
 
         //add the message to the model
         model.addAttribute("message", message);
@@ -42,4 +38,21 @@ public class HelloWorldController {
         return "helloworld";
 
     }
+
+    @PostMapping("/processVersion2")
+    public String processFormVersin2(@RequestParam("studentName") String theName, Model model){
+        //convert the name to upper case
+        theName = theName.toUpperCase();
+
+
+        //create the new message
+        String message = "Happy to see you! " + theName;
+
+        //add the message to the model
+        model.addAttribute("message", message);
+
+        return "helloworld";
+
+    }
+
 }
