@@ -54,7 +54,7 @@ public class HelloWorldController {
         return "helloworld";
 
     }
-    @PostMapping("/process/:studentName")
+    @GetMapping("/process/:studentName")
     public String processForm3(HttpServletRequest request, Model model){
         //read the request parameter from the HTML form
         String studentName = request.getParameter("studentName");
