@@ -16,8 +16,11 @@ public class StudentController {
     }
 
     @PostMapping("signin")
-    public void signin(@ModelAttribute("student") Student theStudent){
+    public String submitSignIn(@ModelAttribute("student") Student theStudent, Model model){
         System.out.println("Form Submitted!");
-        System.out.println(theStudent);
+
+        model.addAttribute("studentName", theStudent.getFirstName() + theStudent.getLastName());
+        model.addAttribute("message", "Professor");
+        return"helloworld";
     }
 }
