@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class StudentController {
@@ -18,7 +19,8 @@ public class StudentController {
     }
 
     @PostMapping("signin")
-    public void signin(@RequestBody Student student){
+    public void signin(Model model){
+        Student student = (Student) model.getAttribute("student");
         System.out.println("Form Submitted!");
         System.out.println(student);
     }

@@ -5,7 +5,8 @@ public class Student {
     private String lastName;
 
     public Student(){
-
+    this.firstName="Faruq";
+    this.lastName="Hmeef";
     }
 
     public Student(String firstName, String lastName) {
