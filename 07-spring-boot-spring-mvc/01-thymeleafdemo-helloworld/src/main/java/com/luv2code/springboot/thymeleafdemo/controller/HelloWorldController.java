@@ -54,5 +54,21 @@ public class HelloWorldController {
         return "helloworld";
 
     }
+    @PostMapping("/process/:studentName")
+    public String processForm3(HttpServletRequest request, Model model){
+        //read the request parameter from the HTML form
+        String studentName = request.getParameter("studentName");
+        //convert the name to upper case
+        studentName = studentName.toUpperCase();
 
+
+        //create the new message
+        String message = "Happy to see you! again " + studentName;
+
+        //add the message to the model
+        model.addAttribute("message", message);
+
+        return "helloworld";
+
+    }
 }
