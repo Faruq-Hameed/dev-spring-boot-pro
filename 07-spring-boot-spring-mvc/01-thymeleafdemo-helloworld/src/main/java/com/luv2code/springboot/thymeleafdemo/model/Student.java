@@ -1,4 +1,4 @@
-package com.luv2code.springboot.thymeleafdemo.utils;
+package com.luv2code.springboot.thymeleafdemo.model;
 
 public class Student {
     private String firstName;
