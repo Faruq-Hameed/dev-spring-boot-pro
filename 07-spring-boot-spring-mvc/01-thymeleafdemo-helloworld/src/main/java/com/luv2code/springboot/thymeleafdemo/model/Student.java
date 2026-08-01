@@ -14,7 +14,7 @@ public class Student {
         this.lastName = lastName;
     }
 
-    ublic String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
