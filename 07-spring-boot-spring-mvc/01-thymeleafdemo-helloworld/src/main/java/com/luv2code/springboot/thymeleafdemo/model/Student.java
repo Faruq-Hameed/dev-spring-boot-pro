@@ -14,7 +14,7 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
+    publc String getFirstName() {
         return firstName;
     }
 
